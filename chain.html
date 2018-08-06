@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>食物链详情</title>
+    <link rel="stylesheet" href="css/commen.css"/>
+    <link rel="stylesheet" href="css/chain.css"/>
+    <link href="css/magnify.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+<div class="magnify">
+    <div class="chainBox" data-magnify-src="">
+        <div class="chainBack">
+            <img src="image/back.png" class="imgBox" onclick="history.go(-1)">
+            <p>食物链</p>
+        </div>
+        <ul class="chainUlBox">
+            <li class="chainLi0 chainDiv0">
+                <!--动态获取上游数据-->
+                <!--<ul class="chainUlTwo chainUp"></ul>-->
+            </li>
+            <li class="chainLi1"><img src="image/jiantou.png"></li>
+            <li class="chainLi2  chainDiv2">
+                <!--动态获取中游数据-->
+                <!--<ul class="chainUlTwo"></ul>-->
+            </li>
+            <li class="chainLi3"><img src="image/jiantou.png"></li>
+            <li class="chainLi4  chainDiv4">
+                <!--动态获取下游数据-->
+                <!--<ul class="chainUlTwo chainDown"></ul>-->
+            </li>
+        </ul>
+        <!--动、植物简介-->
+        <div class="abstract"></div>
+
+    </div>
+    <img src="image/fdj.png" class="fjdBox">
+    <button class="button">手指移动可触发放大镜</button>
+</div>
+<div class="dang"></div>
+
+<script src="script/jquery-2.1.1.min.js"></script>
+<script src="script/font.js"></script>
+<script src="script/chain.js"></script>
+<script src="script/jquery.magnify.js"></script>
+
+<script>
+    window.onload=function () {
+        ajaxBox();
+        setTimeout(function () {
+            ff()
+        },2000)
+    };
+</script>
+<script>
+    function ff() {
+        $('.chainBox').magnify();
+    }
+</script>
+</body>
+</html>
