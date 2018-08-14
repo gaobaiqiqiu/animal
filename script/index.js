@@ -1,56 +1,57 @@
-    var docuWidth = document.documentElement.clientWidth;
-    var docuHeight = document.documentElement.clientHeight;
-    var dvObj = document.getElementById('dv');
-    if(docuWidth<docuHeight){
-        dvObj.style.width = docuWidth + 'px';
-        dvObj.style.height = docuHeight + 'px';
-        dvObj.style.transform = 'none';
-        dvObj.style.marginTop =  '0px';
-        dvObj.style.marginLeft = '0px';
-        var width1 = '';
-        var height1 = '';
-        function random1() {
-            width1 = Math.floor(Math.random() * docuWidth +1);
-            height1 = Math.floor(Math.random() * docuHeight +1);
-        }
-        setInterval(random1, 1000);
-    }else{
-        dvObj.style.width = docuHeight + 'px';
-        dvObj.style.height = docuWidth + 'px';
-        dvObj.style.transform = 'rotate(90deg)';
-        dvObj.style.marginTop = (docuHeight-docuWidth)/2 + 'px';
-        dvObj.style.marginLeft = -(docuHeight-docuWidth)/2 + 'px';
-    }
-document.documentElement.style.fontSize = $('#dv')[0].offsetWidth/16+'px';
+//     var docuWidth = document.documentElement.clientWidth;
+//     var docuHeight = document.documentElement.clientHeight;
+//     var dvObj = document.getElementById('dv');
+//     if(docuWidth<docuHeight){
+//         dvObj.style.width = docuWidth + 'px';
+//         dvObj.style.height = docuHeight + 'px';
+//         dvObj.style.transform = 'none';
+//         dvObj.style.marginTop =  '0px';
+//         dvObj.style.marginLeft = '0px';
+//         var width1 = '';
+//         var height1 = '';
+//         function random1() {
+//             width1 = Math.floor(Math.random() * docuWidth +1);
+//             height1 = Math.floor(Math.random() * docuHeight +1);
+//         }
+//         setInterval(random1, 1000);
+//     }else{
+//         dvObj.style.width = docuHeight + 'px';
+//         dvObj.style.height = docuWidth + 'px';
+//         dvObj.style.transform = 'rotate(90deg)';
+//         dvObj.style.marginTop = (docuHeight-docuWidth)/2 + 'px';
+//         dvObj.style.marginLeft = -(docuHeight-docuWidth)/2 + 'px';
+//     }
+// document.documentElement.style.fontSize = innerWidth/16+'px';
 //强制竖屏
-window.onresize = function(){
-    var docuWidth = document.documentElement.clientWidth;
-    var docuHeight = document.documentElement.clientHeight;
-    var dvObj = document.getElementById('dv');
-    if(docuWidth<docuHeight){
-        dvObj.style.width = docuWidth + 'px';
-        dvObj.style.height = docuHeight + 'px';
-        dvObj.style.transform = 'none';
-        dvObj.style.marginTop =  '0px';
-        dvObj.style.marginLeft = '0px';
-        var width1 = '';
-        var height1 = '';
-        function random1() {
-            width1 = Math.floor(Math.random() * docuWidth +1);
-            height1 = Math.floor(Math.random() * docuHeight +1);
-        }
-        setInterval(random1, 1000);
-    }else{
-        dvObj.style.width = docuHeight + 'px';
-        dvObj.style.height = docuWidth + 'px';
-        dvObj.style.transform = 'rotate(90deg)';
-        dvObj.style.marginTop = (docuHeight-docuWidth)/2 + 'px';
-        dvObj.style.marginLeft = -(docuHeight-docuWidth)/2 + 'px';
-    }
-    console.log(docuHeight,docuWidth)
-};
+// window.onresize = function(){
+//     var docuWidth = document.documentElement.clientWidth;
+//     var docuHeight = document.documentElement.clientHeight;
+//     var dvObj = document.getElementById('dv');
+//     if(docuWidth<docuHeight){
+//         dvObj.style.width = docuWidth + 'px';
+//         dvObj.style.height = docuHeight + 'px';
+//         dvObj.style.transform = 'none';
+//         dvObj.style.marginTop =  '0px';
+//         dvObj.style.marginLeft = '0px';
+//         var width1 = '';
+//         var height1 = '';
+//         function random1() {
+//             width1 = Math.floor(Math.random() * docuWidth +1);
+//             height1 = Math.floor(Math.random() * docuHeight +1);
+//         }
+//         setInterval(random1, 1000);
+//     }else{
+//         dvObj.style.width = docuHeight + 'px';
+//         dvObj.style.height = docuWidth + 'px';
+//         dvObj.style.transform = 'rotate(90deg)';
+//         dvObj.style.marginTop = (docuHeight-docuWidth)/2 + 'px';
+//         dvObj.style.marginLeft = -(docuHeight-docuWidth)/2 + 'px';
+//     }
+//     console.log(docuHeight,docuWidth)
+// };
 
-
+var docuWidth = document.documentElement.clientWidth;
+var docuHeight = document.documentElement.clientHeight;
 //js获取url参数
 function GetQueryString(name){
     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
@@ -94,8 +95,8 @@ $.ajax({
                             var sourceHeight = 1920;
                             try {
                                 $('body').css({
-                                    'height': $('#dv')[0].offsetHeight,
-                                    'width': $('#dv')[0].offsetWidth,
+                                    'height': docuHeight,
+                                    'width': docuWidth,
                                     'background-color': '#272E38',
                                     'overflow': 'hidden'
                                 });
@@ -105,8 +106,8 @@ $.ajax({
                                     '" class="swiper-lazy" alt=""/><div class="swiper-lazy-preloader"></div></a><div class="voice"><img  src="image/voiced.png" class="swiperes" alt=""/><a onclick="opendetails(' +
                                     datasC.resourceId + ')">' + datasC.resourceTitle + '</a></div></div></div>');
                                 $('.animal').css({
-                                    'width': Math.floor(0.73 * $('#dv')[0].offsetWidth),
-                                    'height': Math.floor(0.74 * $('#dv')[0].offsetHeight),
+                                    'width': Math.floor(0.73 * docuWidth),
+                                    'height': Math.floor(0.74 * docuHeight),
                                     'margin': '0 auto',
                                     'border-radius': '0.3rem',
                                     'position': 'relative',
@@ -114,18 +115,18 @@ $.ajax({
                                 });
                                 $('.animal a img').css({
                                     'position': 'absolute',
-                                    'max-width': Math.floor(874 / sourceWidth * $('#dv')[0].offsetWidth),
-                                    'max-height': Math.floor(760 / sourceHeight * $('#dv')[0].offsetHeight),
+                                    'max-width': Math.floor(874 / sourceWidth * docuWidth),
+                                    'max-height': Math.floor(760 / sourceHeight * docuHeight),
                                     'display': 'block',
-                                    'left': Math.floor(-0.1 * 0.73 * $('#dv')[0].offsetWidth),
-                                    'top': Math.floor(0.08 * 0.74 * $('#dv')[0].offsetHeight),
+                                    'left': Math.floor(-0.1 * 0.73 * docuWidth),
+                                    'top': Math.floor(0.08 * 0.74 * docuHeight),
                                     'cursor': 'pointer',
                                     'padding-bottom': '8rem'
                                 });
                                 $('.animal .voice').css({
                                     'position': 'absolute',
-                                    'right': Math.floor(0.04 * 0.73 * $('#dv')[0].offsetWidth),
-                                    'top': Math.floor(0.61 * 0.74 * $('#dv')[0].offsetHeight)
+                                    'right': Math.floor(0.04 * 0.73 * docuWidth),
+                                    'top': Math.floor(0.61 * 0.74 * docuHeight)
                                 });
                                 var audio = datasC.audio;
                                 arrayAudio.push(audio);
