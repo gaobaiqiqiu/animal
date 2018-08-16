@@ -220,5 +220,10 @@ function loadSwiper(){
         }
     });
 }
-
+function indexBack()
+{
+	if( typeof( goofypapaGame ) != "undefined" && goofypapaGame ){
+		window.location.href='goofypapa://back';
+	}
+}
 
