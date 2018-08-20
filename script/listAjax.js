@@ -25,19 +25,29 @@ $.ajax({
         console.log(datas);
         for(var i=0;i<datas.length;i++){
             //把录制时间、地点去掉了
-            $("#list").append('<li style="width:100%;height:6rem;display:block;background-image: url(http://www.dadpat.com/'+datas[i].headImage+');background-size:100% 6rem;"><div class="info" style="margin-top: 1.2rem"><div><p>'+datas[i].resourceTitle+'</p><!--<s></s>--></div><h4>'+datas[i].resourceDesc+'</h4></div></li>');
+            $("#list").append('<li style="width:100%;height:6rem;display:block;background-image: url(http://www.dadpat.com/'+datas[i].headImage+');background-size:100% 6rem;"><div class="info" style="margin-top: 1.2rem"><div><p>'+datas[i].resourceTitle+'</p></div><div style="display:none">'+datas[i].resourceDesc+'</div></div></li>');
         }
         $("#list li").click(function(){
             var index = $(this).index();
             detailsPage(datas[index].resourceId);
         });
-        $("#list div.info>h4").each(function(){
+        //之前的写法
+        /*$("#list div.info>h4").each(function(){
             //字符个数
             var maxwidth=27;
             if($(this).text().length>maxwidth){
                 $(this).text($(this).text().substring(0,maxwidth));
                 $(this).html($(this).html()+"......");
             }
+        });*/
+        var arr = [];
+        $("#list div.info").each(function(){
+        	console.log($(this)[0].children[1].innerText)
+        	var textAll  = $(this)[0].children[1].innerText;
+            //字符个数
+			arr = textAll.split(";")
+			console.log(arr)
+			$(this).append('<div class="dvPin"><p>'+arr[0]+'</p><p>'+arr[1]+'</p></div>')
         });
         //设置列表页头像地址
         data.image;
