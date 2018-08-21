@@ -44,48 +44,49 @@ $.ajax({
         $("header p").html(resourceTitle);
         //设置百科图标后动物名称和拼音
         $(".tabs>p>b").html(resourceTitle);
-        var pinyin = codefans_net_CC2PY(datas.resourceTitle);
-        $(".tabs>p>span").html("["+pinyin+"]");
         
-        if(resourceTitle == '鬼鸮'){
-        	$(".tabs>p>span").html("[GuiXiao]");
-        }
-        if(resourceTitle == '小熊猫'){
-        	$(".tabs>p>span").html("[XiaoXiongMao]");
-        }
-        if(resourceTitle == '大熊猫'){
-        	$(".tabs>p>span").html("[DaXiongMao]");
-        }
-        if(resourceTitle == '豹猫'){
-        	$(".tabs>p>span").html("[BaoMao]");
-        }
-        if(resourceTitle == '斑颈穂鹛'){
-        	$(".tabs>p>span").html("[BanJingSuiMei]");
-        }
-        if(resourceTitle == '红喉歌鸲'){
-        	$(".tabs>p>span").html("[HongHouGeQu]");
-        }
-        if(resourceTitle == '狗獾'){
-        	$(".tabs>p>span").html("[GouHuan]");
-        }
-        if(resourceTitle == '白脸鳾'){
-        	$(".tabs>p>span").html("[BaiLianShi]");
-        }
-        if(resourceTitle == '鸲岩鹨'){
-        	$(".tabs>p>span").html("[QuYanLiu]");
-        }
-        if(resourceTitle == '波斯猫'){
-        	$(".tabs>p>span").html("[BoSiMao]");
-        }
-        if(resourceTitle == '黑胸歌鸲'){
-        	$(".tabs>p>span").html("[HeiXiongGeQu]");
-        }
-        if(resourceTitle == '暹罗猫'){
-        	$(".tabs>p>span").html("[XianLuoMao]");
-        }
-        if(resourceTitle == '灰头绿啄木鸟'){
-        	$(".tabs>p>span").html("[HuiTouLvZhuoMuNiao]");
-        }
+//      var pinyin = codefans_net_CC2PY(datas.resourceTitle);
+//      $(".tabs>p>span").html("["+pinyin+"]");
+//      
+//      if(resourceTitle == '鬼鸮'){
+//      	$(".tabs>p>span").html("[GuiXiao]");
+//      }
+//      if(resourceTitle == '小熊猫'){
+//      	$(".tabs>p>span").html("[XiaoXiongMao]");
+//      }
+//      if(resourceTitle == '大熊猫'){
+//      	$(".tabs>p>span").html("[DaXiongMao]");
+//      }
+//      if(resourceTitle == '豹猫'){
+//      	$(".tabs>p>span").html("[BaoMao]");
+//      }
+//      if(resourceTitle == '斑颈穂鹛'){
+//      	$(".tabs>p>span").html("[BanJingSuiMei]");
+//      }
+//      if(resourceTitle == '红喉歌鸲'){
+//      	$(".tabs>p>span").html("[HongHouGeQu]");
+//      }
+//      if(resourceTitle == '狗獾'){
+//      	$(".tabs>p>span").html("[GouHuan]");
+//      }
+//      if(resourceTitle == '白脸鳾'){
+//      	$(".tabs>p>span").html("[BaiLianShi]");
+//      }
+//      if(resourceTitle == '鸲岩鹨'){
+//      	$(".tabs>p>span").html("[QuYanLiu]");
+//      }
+//      if(resourceTitle == '波斯猫'){
+//      	$(".tabs>p>span").html("[BoSiMao]");
+//      }
+//      if(resourceTitle == '黑胸歌鸲'){
+//      	$(".tabs>p>span").html("[HeiXiongGeQu]");
+//      }
+//      if(resourceTitle == '暹罗猫'){
+//      	$(".tabs>p>span").html("[XianLuoMao]");
+//      }
+//      if(resourceTitle == '灰头绿啄木鸟'){
+//      	$(".tabs>p>span").html("[HuiTouLvZhuoMuNiao]");
+//      }
         
         
         
@@ -214,7 +215,7 @@ $.ajax({
     async:true,
     success:function (data) {
         var datas=data.data;
-        // console.log(datas)
+        console.log(datas)
         $(".eaten").append('<img src=http://www.dadpat.com/'+datas.descImg+' style="width:100%">');
         $(".eaten").click(function () {
             window.location.href="chain.html?resourceId="+myresourceId
