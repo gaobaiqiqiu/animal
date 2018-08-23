@@ -108,14 +108,14 @@
     visibility:hidden;
 }
 /*放大的背景图*/
-.magnify{
-    height:100%;
-    width:100%;
+#mirror{
     position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    display: none;
 }
 .fjdBox{
-    height: 186px;
-    width: 167px;
     position: absolute;
     display: none;
     z-index: 1000;
@@ -129,8 +129,8 @@
     width: 37%;
     text-align: center;
     position: fixed;
-    top: 47%;
-    left: 6%;
+    top: 5%;
+    left: 31%;
     color: #FFFFFF;
     border-radius: 0.5rem;
     background-color: rgba(255,255,255,0.2);

@@ -8,12 +8,11 @@
     <title>食物链详情</title>
     <link rel="stylesheet" href="css/commen.css"/>
     <link rel="stylesheet" href="css/chain.css"/>
-    <link href="css/magnify.css" rel="stylesheet" type="text/css">
 
 </head>
 <body>
 <div class="magnify">
-    <div class="chainBox" data-magnify-src="">
+    <div class="chainBox" id="pic">
         <div class="chainBack">
             <img src="image/back.png" class="imgBox" onclick="history.go(-1)">
             <p>食物链</p>
@@ -38,28 +37,24 @@
         <div class="abstract"></div>
 
     </div>
-    <img src="image/fdj.png" class="fjdBox">
     <button class="button">手指移动可触发放大镜</button>
+    <!--3倍背景图放置的位置-->
+    <div id="mirror"></div>
+    <!--放大镜-->
+    <img src="image/fdj.png" class="fjdBox" id="fdj">
+    <!--遮挡层-->
+    <div class="dang"></div>
 </div>
-<div class="dang"></div>
+
 
 <script src="script/jquery-2.1.1.min.js"></script>
 <script src="script/font.js"></script>
 <script src="script/chain.js"></script>
-<script src="script/jquery.magnify.js"></script>
 
 <script>
     window.onload=function () {
         ajaxBox();
-        setTimeout(function () {
-            ff()
-        },2000)
     };
-</script>
-<script>
-    function ff() {
-        $('.chainBox').magnify();
-    }
 </script>
 </body>
 </html>

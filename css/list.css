@@ -38,7 +38,7 @@ header>div{
     margin-bottom: 0.1rem;
 }
 #list div.info{
-    width: 50%;
+    width: 45%;
     margin-left: 7rem;
     margin-top: 0.7rem;
 }
@@ -47,16 +47,16 @@ header>div{
     overflow: hidden;
 }
 #list div.info>div>p{
-    /*float: left;*/
+    float: left;
     font-size: 0.7rem;
     color: #fff;
 }
-#list div.info>.dvPin>p{
+#list div.info>.dvPin{
     font-size: 0.6rem;
     color: #fff;
     font-weight: normal;
     margin-top: 0.56rem;
-    /*height: 2rem;*/
+    height: 2rem;
     overflow: hidden;
     line-height: 1rem;
 }

@@ -14,26 +14,54 @@ var ajaxBox=function () {
         async:false,
         success:function (data) {
             var datas=data.data;
-            console.log(datas)
-            var windowRealHeight = document.documentElement.clientHeight;
-            var windowRealWidth = document.documentElement.clientWidth;
+            // console.log(datas)
+            var docuWidth = document.documentElement.clientWidth;
+            var docuHeight = document.documentElement.clientHeight;
             var sourceWidth = 1080;
             var sourceHeight = 1920;
+            //强制竖屏
+            var dvObj = document.getElementsByClassName('magnify');
+            console.log(dvObj)
+            if(docuWidth<docuHeight){
+                dvObj[0].style.width = docuWidth + 'px';
+                dvObj[0].style.height = docuHeight + 'px';
+                dvObj[0].style.transform = 'none';
+                dvObj[0].style.marginTop =  '0px';
+                dvObj[0].style.marginLeft = '0px';
+            }else{
+                dvObj[0].style.width = docuHeight + 'px';
+                dvObj[0].style.height = docuWidth + 'px';
+                dvObj[0].style.transform = 'rotate(270deg)';
+                dvObj[0].style.marginTop = (docuHeight-docuWidth)/2 + 'px';
+                dvObj[0].style.marginLeft = -(docuHeight-docuWidth)/2 + 'px';
+            }
+            var windowRealHeight = $('.magnify')[0].offsetHeight;
+            var windowRealWidth = $('.magnify')[0].offsetWidth;
+            document.documentElement.style.fontSize = windowRealWidth/16+'px';
             //背景图
-            $("body").append('<img src=http://www.dadpat.com/'+datas.bgImg+' class="backgroundImg">');
             $('body').css({
                 'height': windowRealHeight,
                 'width': windowRealWidth,
-                'position': 'absolute',
-                'top': 0,
-                'bottom': 0
+                'overflow': 'hidden'
             });
+            $('.magnify').append('<img src=http://www.dadpat.com/'+datas.bgImg+' class="backgroundImg">');
             $('.backgroundImg').css({
                 'height': windowRealHeight,
                 'width': windowRealWidth,
                 'position': 'absolute',
                 'top': 0,
                 'z-index': -1
+            });
+            $('.chainBox').css({
+                'height': windowRealHeight,
+                'width': windowRealWidth,
+                'position': 'absolute',
+                'top': 0,
+                'overflow':'hidden'
+            });
+            $('.chainUlBox').css({
+                'height': windowRealHeight,
+                'width': windowRealWidth,
             });
             $('.chainUlBox .chainLi1 img').css({
                 "width": Math.floor(53 / sourceWidth * windowRealWidth),
@@ -45,11 +73,70 @@ var ajaxBox=function () {
                 "height": Math.floor(118 / sourceHeight * windowRealHeight),
                 "margin-top": Math.floor(30 / sourceHeight * windowRealHeight)
             });
-            $('.chainUlBox').css({
-                'height': windowRealHeight,
-                'width': windowRealWidth,
+            $('#mirror').css({
+                'height':windowRealHeight/6,
+                'width':windowRealHeight/6,
             });
-            $('.chainBox')[0].attributes[1].nodeValue='http://www.dadpat.com/'+datas.fullImg;
+            $("#mirror").append('<img src=http://www.dadpat.com/'+datas.fullImg+' id="fullImg">');
+            $('#fullImg').css({
+                'position':'absolute'
+            });
+            // alert(datas.fullImg)
+            $('.fjdBox').css({
+                'height':windowRealHeight/4,
+                'width':windowRealHeight/4.3,
+            });
+
+            /*===============================放大镜调用---开始========================================================================================*/
+            var mirror = document.getElementById("mirror");
+            var pic = document.getElementById("pic");
+            var fdj = document.getElementById("fdj");
+            var fullImg = document.getElementById("fullImg");
+            function moving(e){
+                var x = e.touches[0].clientX -70;  //触摸的位置
+                var y = e.touches[0].clientY -70;
+                var mirrorHeight = mirror.offsetHeight;  //放大镜的宽高
+                var mirrorWidth = mirror.offsetWidth;
+                var picHeight = pic.offsetHeight;  //小图的宽高
+                var picWidth = pic.offsetWidth;
+                if(x <= picWidth && y <= picHeight && x >= -picWidth && y>= -picHeight){
+                    mirror.style.left = x - mirrorWidth / 2 + "px";
+                    mirror.style.top = y - mirrorHeight / 2 + "px";
+                    if(x - mirrorWidth / 1.8 < windowRealWidth - fdj.offsetWidth){
+                        fdj.style.left = x - mirrorWidth / 1.8 + "px";
+                    }else{
+                        fdj.style.display = 'none';
+                        mirror.style.display = 'none';
+                    }
+                    if(y - mirrorHeight / 1.8 < windowRealHeight - fdj.offsetHeight){
+                        fdj.style.top = y - mirrorHeight / 1.8 + "px";
+                    }else{
+                        fdj.style.display = 'none';
+                        mirror.style.display = 'none';
+                    }
+                    var bl = x * sourceWidth / windowRealWidth * 3 - mirrorWidth / 2;
+                    var bt = y * sourceHeight / windowRealHeight * 3 - mirrorHeight / 2;
+                    fullImg.style.left =- bl + "px";
+                    fullImg.style.top = - bt + "px";
+                    // console.log("x: ",windowRealWidth - fdj.offsetWidth, "y: ",windowRealHeight - fdj.offsetHeight);
+                }
+            }
+            window.ontouchstart = function(){
+                $('#mirror').css('display','none');
+                $('#fdj').css('display','none')
+            };
+            window.ontouchmove = function(e){
+                $('#mirror').css('display','block');
+                $('#fdj').css('display','block');
+                var e = e?e:window.event;
+                moving(e);
+            };
+            window.ontouchend = function(){
+                $('#mirror').css('display','none');
+                $('#fdj').css('display','none')
+            };
+            /*===================================放大镜调用---结束=====================================================================================*/
+
             var itemLent = datas.items;
             console.log(itemLent);
             var arr = [];
@@ -76,6 +163,21 @@ var ajaxBox=function () {
                 /*获取动、植物的描述*/
                 var pDesc = document.querySelectorAll('.chainUlBox p');
                 for (var n=0;n<pDesc.length;n++){
+                	if(pDesc[n].innerText == '鸟类'){
+                		pDesc[n].style.marginLeft = '3rem';
+                	}
+                	if(pDesc[n].innerText == '鹰鹃'){
+                		pDesc[n].style.marginLeft = '5.5rem';
+                	}
+                	if(pDesc[n].innerText == '麋鹿'){
+                		pDesc[n].style.marginLeft = '5.2rem';
+                	}
+                	if(pDesc[n].innerText == '白腹锦鸡'){
+                		pDesc[n].style.marginLeft = '6.5rem';
+                	}
+                	if(pDesc[n].innerText == '驼鹿'){
+                		pDesc[n].style.marginLeft = '5.8rem';
+                	}
                     let itemIdP = itemLent[i].resId;
                     if(itemIdP!=null){  //判断是否存在可跳转的resId
                         if(pDesc[n].innerText==itemLent[i].itemName){
@@ -131,7 +233,7 @@ var ajaxBox=function () {
                                 'justify-content': 'center',
                                 'position': 'absolute',
                                 'z-index': 100,
-                                'top': (imDescTParent.offsetTop+imDescTParent.offsetHeight+10)+'px',
+                                'top': (imDescTParent.offsetTop+imDescTParent.offsetHeight+8)+'px',
                                 'left': 0,
                                 'width': '100%',
                                 'border-top': '0.1rem solid rgba(255,255,255,0.7)',

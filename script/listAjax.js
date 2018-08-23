@@ -42,11 +42,11 @@ $.ajax({
         });*/
         var arr = [];
         $("#list div.info").each(function(){
-//      	console.log($(this)[0].children[1].innerText)
+        	// console.log($(this)[0].children[1].innerText)
         	var textAll  = $(this)[0].children[1].innerText;
             //字符个数
 			arr = textAll.split(";")
-//			console.log(arr)
+			// console.log(arr)
 			$(this).append('<div class="dvPin"><p>'+arr[0]+'</p><p>'+arr[1]+'</p></div>')
         });
         //设置列表页头像地址
