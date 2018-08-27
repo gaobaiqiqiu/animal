@@ -47,7 +47,7 @@ $.ajax({
             //字符个数
 			arr = textAll.split(";")
 			// console.log(arr)
-			$(this).append('<div class="dvPin"><p>'+arr[0]+'</p><p>'+arr[1]+'</p></div>')
+			$(this).append('<div class="dvPin"><p>'+arr[0]+'</p><br><p>'+arr[1]+'</p></div>')
         });
         //设置列表页头像地址
         data.image;
