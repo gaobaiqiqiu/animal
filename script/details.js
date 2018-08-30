@@ -35,9 +35,12 @@ $.ajax({
         //设置动物轮播图片
         var datas=data.data;
         console.log(datas);
-        for(var i=0;i<3;i++){
-            $("#header .swiper-wrapper").append('<div class="swiper-slide"><img style="width: 100%;" src="http://www.dadpat.com/'+datas.image.banner[i].attUrl+'" alt=""/></div>' );
+        if(datas.image.banner.length>0){
+            for(var i=0;i<3;i++){        
+                $("#header .swiper-wrapper").append('<div class="swiper-slide"><img style="width: 100%;" src="http://www.dadpat.com/'+datas.image.banner[i].attUrl+'" alt=""/></div>' );
+            }  
         }
+        
         //获取动物名称
         var resourceTitle=datas.resourceTitle;
         //设置页面头部动物名称
@@ -152,7 +155,6 @@ $.ajax({
             window.location.href="pics.html?resourceId="+myresourceId+"&imgType=default";
         });
     },
-
     error:function(XMLResponse){
         alert(XMLResponse.responseText);
     }
