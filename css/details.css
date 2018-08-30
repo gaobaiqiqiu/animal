@@ -63,7 +63,7 @@ article>p{font-size: 0.6rem;color: rgba(255,255,255,0.8);margin: 0 0.57rem 0 0.5
 .eaten{width:100%}
 
 /*简笔画*/
-.handDrawDiv{
+/* .handDrawDiv{
 	display: inline-block;
     position: relative;
     left: 2rem;
@@ -86,8 +86,25 @@ article>p{font-size: 0.6rem;color: rgba(255,255,255,0.8);margin: 0 0.57rem 0 0.5
     -moz-opacity:0;  
     -khtml-opacity: 0;  
     opacity: 0;  
+} */
+.handDrawModel,
+.handDrawUpload{
+    float: left;
+    height: 7.9rem;
+    width: 5.6rem;
+    /* background-color: red; */
 }
-
+.handDrawModel img,
+.handDrawUpload img{
+    height: 100%;
+    width: 100%;
+}
+.handDrawModel{
+    margin-left: 2.2rem;
+}
+.handDrawUpload{
+    margin-left: 0.4rem;
+}
 
 /*图片*/
 .container{position: relative;width:100%;bottom:1rem;margin-top: 1rem}

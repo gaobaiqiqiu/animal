@@ -42,56 +42,8 @@ $.ajax({
         var resourceTitle=datas.resourceTitle;
         //设置页面头部动物名称
         $("header p").html(resourceTitle);
-        //设置百科图标后动物名称和拼音
-        $(".tabs>p>b").html(resourceTitle);
-        //var pinyin = codefans_net_CC2PY(datas.resourceTitle);
-        //$(".tabs>p>span").html("["+pinyin+"]");
-        
-        // if(resourceTitle == '鬼鸮'){
-        // 	$(".tabs>p>span").html("[GuiXiao]");
-        // }
-        // if(resourceTitle == '小熊猫'){
-        // 	$(".tabs>p>span").html("[XiaoXiongMao]");
-        // }
-        // if(resourceTitle == '大熊猫'){
-        // 	$(".tabs>p>span").html("[DaXiongMao]");
-        // }
-        // if(resourceTitle == '豹猫'){
-        // 	$(".tabs>p>span").html("[BaoMao]");
-        // }
-        // if(resourceTitle == '斑颈穂鹛'){
-        // 	$(".tabs>p>span").html("[BanJingSuiMei]");
-        // }
-        // if(resourceTitle == '红喉歌鸲'){
-        // 	$(".tabs>p>span").html("[HongHouGeQu]");
-        // }
-        // if(resourceTitle == '狗獾'){
-        // 	$(".tabs>p>span").html("[GouHuan]");
-        // }
-        // if(resourceTitle == '白脸鳾'){
-        // 	$(".tabs>p>span").html("[BaiLianShi]");
-        // }
-        // if(resourceTitle == '鸲岩鹨'){
-        // 	$(".tabs>p>span").html("[QuYanLiu]");
-        // }
-        // if(resourceTitle == '波斯猫'){
-        // 	$(".tabs>p>span").html("[BoSiMao]");
-        // }
-        // if(resourceTitle == '黑胸歌鸲'){
-        // 	$(".tabs>p>span").html("[HeiXiongGeQu]");
-        // }
-        // if(resourceTitle == '暹罗猫'){
-        // 	$(".tabs>p>span").html("[XianLuoMao]");
-        // }
-        // if(resourceTitle == '灰头绿啄木鸟'){
-        // 	$(".tabs>p>span").html("[HuiTouLvZhuoMuNiao]");
-        // }
-        
-        
-        
-        
-        
-
+        //设置百科图标后动物名称
+        $(".tabs>p>b").html(resourceTitle)
         //设置动物的描述资料
         var resourceDesc=datas.resourceDesc;
         $("article>p").html(resourceDesc);
@@ -158,6 +110,9 @@ $.ajax({
             }
         }
 
+        //简笔画模板
+        $('.handDrawModel').append('<img src="http://www.dadpat.com/'+datas.image.handDraw.attUrl+'">')
+
         //设置动物的图片
         for(var i=2;i<8;i++){
             $(".container").append('<div class="item"><a href="javascript:;"><img src="http://www.dadpat.com/resource/thumbnail/'+datas.image.default[i].attId+'.file" alt=""/></a></div>');
@@ -223,115 +178,115 @@ $.ajax({
 });
 
   //图片上传预览功能
-  function setImagePreviews(avalue) {
-        var docObj = document.getElementById("doc");
-        var dd = document.getElementById("dd");
-        dd.innerHTML = "";
-        var fileList = docObj.files;
-        if(fileList){
-        	 $(".handDrawDiv").css("background","url()");
-        }
-        console.log(fileList.length)
-        console.log(fileList)
+//   function setImagePreviews(avalue) {
+//         var docObj = document.getElementById("doc");
+//         var dd = document.getElementById("dd");
+//         dd.innerHTML = "";
+//         var fileList = docObj.files;
+//         if(fileList){
+//         	 $(".handDrawDiv").css("background","url()");
+//         }
+//         console.log(fileList.length)
+//         console.log(fileList)
       
-        if(fileList.length==0){
-        	$(".handDrawDiv").css("background","url(image/dadpat.png)");
-        	$(".handDrawDiv").css("background-size","cover");
-            console.log(555)
-        }else if(fileList.length==1){
-            dd.innerHTML += "<div style='float:left;height:5rem;width:5rem' > <img id='img'/> </div>";
-            var imgObjPreview = document.getElementById("img");
-            console.log(docObj.files)
-            if(docObj.files){
-                imgObjPreview.style.display = 'block';
-                imgObjPreview.style.maxWidth = '100%';
-                imgObjPreview.style.maxHeight = '100%';
-                imgObjPreview.style.minWidth = '100%';
-                imgObjPreview.style.minHeight = '100%';
-//              imgObjPreview.src = docObj.files[0].getAsDataURL();
-                //火狐7以上版本不能用上面的getAsDataURL()方式获取，需要一下方式
-                imgObjPreview.src = window.URL.createObjectURL(docObj.files[0]);
-                console.log(666)
-            }else{
-                console.log(55998);
-                //图片异常的捕捉，防止用户修改后缀来伪造图片
-                try {
-                    localImagId.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
-                    localImagId.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = imgSrc;
-                    console.log(localImagId)
-                }
-                catch (e) {
-                    alert("您上传的图片格式不正确，请重新选择!");
-                    return false;
-                }
-                imgObjPreview.style.display = 'none';
-                document.selection.empty();
-            }
-        }else if(fileList.length>1){
-            console.log('只可以选取一张图片');
-            //for循环拿到的是多张图片
-            for (var i = 0; i < fileList.length; i++) {
-                dd.innerHTML += "<div style='float:left;height:5rem;width:5rem' > <img id='img" + i + "'  /> </div>";
-                var imgObjPreview = document.getElementById("img"+i);
-                if (docObj.files && docObj.files[i]) {
-                    //火狐下，直接设img属性
-                    imgObjPreview.style.display = 'block';
-                    imgObjPreview.style.maxWidth = '100%';
-                    imgObjPreview.style.maxHeight = '100%';
-                    imgObjPreview.style.minWidth = '100%';
-                    imgObjPreview.style.minHeight = '100%';
-//              imgObjPreview.src = docObj.files[0].getAsDataURL();
-                    //火狐7以上版本不能用上面的getAsDataURL()方式获取，需要一下方式
-                    imgObjPreview.src = window.URL.createObjectURL(docObj.files[i]);
-                    console.log(imgObjPreview)
-                }else {
-                    console.log(55998);
-                    //IE下，使用滤镜
-                    docObj.select();
-                    var imgSrc = document.selection.createRange().text;
-                    alert(imgSrc);
-                    var localImagId = document.getElementById("img" + i);
-                    //必须设置初始大小
-                    localImagId.style.maxWidth = '5rem';
-                    localImagId.style.maxHeight = '5rem';
-                    localImagId.style.minWidth = '5rem';
-                    localImagId.style.minHeight = '5rem';
-                    //图片异常的捕捉，防止用户修改后缀来伪造图片
-                    try {
-                        localImagId.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
-                        localImagId.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = imgSrc;
-                        console.log(localImagId)
-                    }
-                    catch (e) {
-                        alert("您上传的图片格式不正确，请重新选择!");
-                        return false;
-                    }
-                    imgObjPreview.style.display = 'none';
-                    document.selection.empty();
-                }
-            }
-        }
+//         if(fileList.length==0){
+//         	$(".handDrawDiv").css("background","url(image/dadpat.png)");
+//         	$(".handDrawDiv").css("background-size","cover");
+//             console.log(555)
+//         }else if(fileList.length==1){
+//             dd.innerHTML += "<div style='float:left;height:5rem;width:5rem' > <img id='img'/> </div>";
+//             var imgObjPreview = document.getElementById("img");
+//             console.log(docObj.files)
+//             if(docObj.files){
+//                 imgObjPreview.style.display = 'block';
+//                 imgObjPreview.style.maxWidth = '100%';
+//                 imgObjPreview.style.maxHeight = '100%';
+//                 imgObjPreview.style.minWidth = '100%';
+//                 imgObjPreview.style.minHeight = '100%';
+// //              imgObjPreview.src = docObj.files[0].getAsDataURL();
+//                 //火狐7以上版本不能用上面的getAsDataURL()方式获取，需要一下方式
+//                 imgObjPreview.src = window.URL.createObjectURL(docObj.files[0]);
+//                 console.log(666)
+//             }else{
+//                 console.log(55998);
+//                 //图片异常的捕捉，防止用户修改后缀来伪造图片
+//                 try {
+//                     localImagId.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
+//                     localImagId.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = imgSrc;
+//                     console.log(localImagId)
+//                 }
+//                 catch (e) {
+//                     alert("您上传的图片格式不正确，请重新选择!");
+//                     return false;
+//                 }
+//                 imgObjPreview.style.display = 'none';
+//                 document.selection.empty();
+//             }
+//         }else if(fileList.length>1){
+//             console.log('只可以选取一张图片');
+//             //for循环拿到的是多张图片
+//             for (var i = 0; i < fileList.length; i++) {
+//                 dd.innerHTML += "<div style='float:left;height:5rem;width:5rem' > <img id='img" + i + "'  /> </div>";
+//                 var imgObjPreview = document.getElementById("img"+i);
+//                 if (docObj.files && docObj.files[i]) {
+//                     //火狐下，直接设img属性
+//                     imgObjPreview.style.display = 'block';
+//                     imgObjPreview.style.maxWidth = '100%';
+//                     imgObjPreview.style.maxHeight = '100%';
+//                     imgObjPreview.style.minWidth = '100%';
+//                     imgObjPreview.style.minHeight = '100%';
+// //              imgObjPreview.src = docObj.files[0].getAsDataURL();
+//                     //火狐7以上版本不能用上面的getAsDataURL()方式获取，需要一下方式
+//                     imgObjPreview.src = window.URL.createObjectURL(docObj.files[i]);
+//                     console.log(imgObjPreview)
+//                 }else {
+//                     console.log(55998);
+//                     //IE下，使用滤镜
+//                     docObj.select();
+//                     var imgSrc = document.selection.createRange().text;
+//                     alert(imgSrc);
+//                     var localImagId = document.getElementById("img" + i);
+//                     //必须设置初始大小
+//                     localImagId.style.maxWidth = '5rem';
+//                     localImagId.style.maxHeight = '5rem';
+//                     localImagId.style.minWidth = '5rem';
+//                     localImagId.style.minHeight = '5rem';
+//                     //图片异常的捕捉，防止用户修改后缀来伪造图片
+//                     try {
+//                         localImagId.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
+//                         localImagId.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = imgSrc;
+//                         console.log(localImagId)
+//                     }
+//                     catch (e) {
+//                         alert("您上传的图片格式不正确，请重新选择!");
+//                         return false;
+//                     }
+//                     imgObjPreview.style.display = 'none';
+//                     document.selection.empty();
+//                 }
+//             }
+//         }
 
-        //上传后台只上传第一张
-        var formData = new FormData();
-      	formData.append('file',docObj.files[0]);
-          $.ajax({
-        	type:"POST",
-    		url:"http://www.dadpat.com/simpleDraw/saveSimple.do?animalId=" + myresourceId,
-    		data: formData, //以键/值对的形式
-    		cache: false,
-			processData: false,
-            contentType: false,
-    		success:function(data){
-    			console.log(data) 	  	
-    		},
-    		error:function( XMLHttpRequest, textStatus, errorThrown ){
-    			console.log("--", textStatus);
-    			console.log("--", errorThrown);
-    		}
-        })
-        return true;
-    }
+//         //上传后台只上传第一张
+//         var formData = new FormData();
+//       	formData.append('file',docObj.files[0]);
+//           $.ajax({
+//         	type:"POST",
+//     		url:"http://www.dadpat.com/simpleDraw/saveSimple.do?animalId=" + myresourceId,
+//     		data: formData, //以键/值对的形式
+//     		cache: false,
+// 			processData: false,
+//             contentType: false,
+//     		success:function(data){
+//     			console.log(data) 	  	
+//     		},
+//     		error:function( XMLHttpRequest, textStatus, errorThrown ){
+//     			console.log("--", textStatus);
+//     			console.log("--", errorThrown);
+//     		}
+//         })
+//         return true;
+//     }
 
 //清除localstorage记录
 $("#goback").click(function(){
