@@ -12,9 +12,9 @@ if(myresourceId!=null&&myresourceId.toString().length>0){
 }
 $.ajax({
     type:"post",
-    url:"http://www.dadpat.com/resource/getResourceInfo.do",
+    url:"http://www.dadpat.com/api/res/get.do",
     dataType:"jsonp",
-    data:{"resourceId":myresourceId}, //以键/值对的形式
+    data:{"resId":myresourceId}, //以键/值对的形式
     async:true,
     success:function(data){
         var datas=data.data;

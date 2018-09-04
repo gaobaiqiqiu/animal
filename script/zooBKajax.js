@@ -45,7 +45,7 @@
 //最新上传接口
 $.ajax({
     type:"get",
-    url:"http://www.dadpat.com/resource/listTopResBatch.do",
+    url:"http://www.dadpat.com/api/res/batch/list/top.do",
     dataType:"jsonp",
     async:true,
     success:function(data){
@@ -64,7 +64,7 @@ $.ajax({
 //最受欢迎接口
 $.ajax({
     type:"get",
-    url:"http://www.dadpat.com/resource/listMostPopularResource.do",
+    url:"http://www.dadpat.com/api/res/list/mostPopular.do",
     dataType:"jsonp",
     data:{"top":9},
     async:true,

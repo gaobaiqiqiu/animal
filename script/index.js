@@ -61,7 +61,7 @@ function GetQueryString(name){
 var arrayAudio = [];
 $.ajax({
     type:"post",
-    url:"http://www.dadpat.com/resource/listTopResBatch.do",
+    url:"http://www.dadpat.com/api/res/batch/list/top.do",
     dataType:"jsonp", //以键/值对的形式
     async:true,
     success:function(data){
@@ -71,26 +71,26 @@ $.ajax({
         console.log(myownerId)
         $.ajax({
             type:"post",
-            url:"http://www.dadpat.com/resource/listByOwner/summary.do",
+            url:"http://www.dadpat.com/api/res/list/summary.do",
             dataType:"jsonp",
             data:{"ownerId":myownerId}, //以键/值对的形式
             async:true,
             success:function(data){
                 var datasB=data.data;
-                console.log(datasB)
+                //console.log(datasB)
                 var responseLen = 0;
                 for(var i=0;i<datasB.length;i++){
                     var myresourceId =datasB[i].resourceId;
                     //console.log(myresourceId)
                     $.ajax({
                         type:"post",
-                        url:"http://www.dadpat.com/resource/getResourceInfo.do",
+                        url:"http://www.dadpat.com/api/res/get.do",
                         dataType:"jsonp",
-                        data:{"resourceId":myresourceId}, //以键/值对的形式
+                        data:{"resId":myresourceId}, //以键/值对的形式
                         async:true,
                         success:function (data) {
                             var datasC = data.data;
-                            // console.log(datasC)
+                            //console.log(datasC)
                             var sourceWidth = 1080;
                             var sourceHeight = 1920;
                             try {

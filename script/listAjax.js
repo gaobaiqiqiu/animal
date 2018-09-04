@@ -11,7 +11,7 @@ var myRecordTime=GetQueryString("recordTime");
 
 $.ajax({
     type: "post",
-    url: "http://www.dadpat.com/resource/listResourceByOwner.do",
+    url: "http://www.dadpat.com/api/res/list.do",
     dataType: "jsonp",
     data:{"ownerId":myOwnerId},
     async: true,
