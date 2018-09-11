@@ -27,8 +27,6 @@ $.ajax({
        $("header p").html(datas.resourceTitle);
         //设置百科图标后动物名称和拼音
         $(".tabs>p>b").html(datas.resourceTitle);
-        var pinyin = codefans_net_CC2PY(datas.resourceTitle);
-        $(".tabs>p>span").html("["+pinyin+"]");
         //设置动物百科内容
         $("article h2").html(datas.resourceWiki);
 
