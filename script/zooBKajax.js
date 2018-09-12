@@ -30,7 +30,8 @@ $.ajax({
         }
         $(".pics li").click(function(){
             var index = $(this).index();
-             window.location.href="list.html?ownerId="+datas[index].batchId+"&count="+datas[index].resourceCount;
+             window.location.href="list.html?ownerId="+datas[index].batchId+"&source="+datas[index].batchSource;
+             console.log(datas[index].batchSource)
         })
     }
 });

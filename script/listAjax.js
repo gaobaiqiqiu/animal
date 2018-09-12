@@ -6,7 +6,7 @@ function GetQueryString(name){
 }
 //定义变量接收url参数，此处的变量名不能与url参数名相同,否则会报错不知道为啥
 var myOwnerId=GetQueryString("ownerId");
-var myCount=GetQueryString("count");
+var mySource=GetQueryString("source");
 var myRecordTime=GetQueryString("recordTime");
 
 $.ajax({
@@ -17,7 +17,8 @@ $.ajax({
     async: true,
     success: function (data) {
         //设置动物资源总数
-        $("header p span").html(myCount);
+        $("header p").html(mySource);
+        console.log(mySource)
         //设置资料录制时间
         $("header p b").html(myRecordTime);
         //遍历返回的数组
