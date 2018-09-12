@@ -1,7 +1,6 @@
  /*图片随机加载*/
- var random=Math.floor(Math.random()*4);
- for(var i=0;i<12;i++){
-     $('.swiper-wrapper').append('<div class="swiper-slide"><img style="width: 100%;height: 100%" src="local/'+random+'/'+i+'.jpg" alt=""/></div>')
+ for(var i=1;i<6;i++){
+     $('.swiper-wrapper').append('<div class="swiper-slide"><img style="width: 100%;height: 100%" src="local/'+i+'.png" alt=""/></div>')
  }
 
  var mySwiper = new Swiper('#header', {
@@ -16,31 +15,6 @@
      observer:true,//修改swiper自己或子元素时，自动初始化swiper
      observeParents:true,//修改swiper的父元素时，自动初始化swiper
  });
- //最新上传接口
-/*(function loadBatchs( template ){
-    console.log(template);
-    let coverImage = "$coverImage$";
-    let batchSource = "$batchSource$";
-    $.ajax({
-        type:"get",
-        url:"http://www.dadpat.com/resource/listTopResBatch.do",
-        dataType:"jsonp",
-        async:true,
-        success:function(data){
-            var datas=data.data;
-            console.log(datas)
-            for(var i=0; i<datas.length; i++){
-                var temp = template.replace(coverImage, datas[i].coverImage);
-                temp = temp.replace(batchSource, datas[i].batchSource);
-                $(".pics").append(temp);
-            }
-            $(".pics li").click(function(){
-                var index = $(this).index();
-                window.location.href="list.html?ownerId="+datas[index].batchId+"&count="+datas[index].resourceCount;
-            })
-        }
-    });
-})("<li style=\"margin: 0 0.3rem 0 0.3rem\"><a><img src=\"http://www.dadpat.com/$coverImage$\" alt=\"\"/></a><span><p>$batchSource$</p></span></li>");*/
 
 //最新上传接口
 $.ajax({

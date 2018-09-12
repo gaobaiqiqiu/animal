@@ -50,10 +50,7 @@ $.ajax({
         //设置动物的描述资料
         var resourceDesc=datas.resourceDesc;
         $("article>p").html(resourceDesc);
-        //点击简介里的声音
-        $(".playEnglish").click(function(){
-            $(this).next("audio")[0].play();
-        });
+        
 
         // 设置动物百科内容
         $("#Allbaike").attr("href",'baike.html?resourceId='+myresourceId);
@@ -62,10 +59,26 @@ $.ajax({
             });
 
         //获取动物声音总条数
-        var audioLength=datas.audio.length;
-        for(var i=1;i<4;i++){
-            if(datas.audio.length <= i) break;
-            var myDuration=Number(datas.audio[i].duration);  //音频时间
+        // var audioLength=datas.audio.length;
+        var audioCe=datas.audio;
+        var audioAll = [];
+        for(var i=0;i<audioCe.length;i++){           
+            if(audioCe[i].audioType == 'DEFAULT'){
+                audioAll.push(audioCe[i])
+            }
+            //简介里的声音
+            if(audioCe[i].audioType == 'PRON_CN'){
+                $('.audioEnglish').attr('src','http://www.dadpat.com/'+audioCe[i].attUrl)
+            }
+        }
+        //点击简介里的声音
+        $(".playEnglish").click(function(){
+            $(this).next("audio")[0].play();
+        });
+        console.log(audioAll)
+        for(var i=0;i<3;i++){
+            if(audioAll.length <= i) break;
+            var myDuration=Number(audioAll[i].duration);  //音频时间
             if(myDuration==0){
                 myDuration=1
             }
