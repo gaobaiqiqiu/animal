@@ -76,7 +76,7 @@ $.ajax({
             $(this).next("audio")[0].play();
         });
         console.log(audioAll)
-        for(var i=0;i<3;i++){
+        for(var i=1;i<4;i++){
             if(audioAll.length <= i) break;
             var myDuration=Number(audioAll[i].duration);  //音频时间
             if(myDuration==0){
