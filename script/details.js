@@ -129,8 +129,10 @@ $.ajax({
         //简笔画模板
         $('.handDrawModel').append('<img src="http://www.dadpat.com/'+datas.image.handDraw.attUrl+'">')
 
+        console.log()
         //设置动物的图片
-        for(var i=2;i<8;i++){
+        for(var i=0;i<6;i++){
+            console.log(datas.image.default[i].attId)
             $(".container").append('<div class="item"><a href="javascript:;"><img src="http://www.dadpat.com/resource/thumbnail/'+datas.image.default[i].attId+'.file" alt=""/></a></div>');
         }
         var num = 6;
