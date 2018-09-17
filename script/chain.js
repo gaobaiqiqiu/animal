@@ -177,6 +177,9 @@ var ajaxBox=function () {
                 	}
                 	if(pDesc[n].innerText == '驼鹿'){
                 		pDesc[n].style.marginLeft = '5.8rem';
+                    }
+                    if(pDesc[n].innerText == '环颈雉'){
+                		pDesc[n].style.marginLeft = '3.8rem';
                 	}
                     let itemIdP = itemLent[i].resId;
                     if(itemIdP!=null){  //判断是否存在可跳转的resId
