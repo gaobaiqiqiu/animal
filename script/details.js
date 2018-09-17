@@ -76,7 +76,7 @@ $.ajax({
             $(this).next("audio")[0].play();
         });
         console.log(audioAll)
-        for(var i=1;i<4;i++){
+        for(var i=0;i<3;i++){
             if(audioAll.length <= i) break;
             var myDuration=Number(audioAll[i].duration);  //音频时间
             if(myDuration==0){
@@ -84,9 +84,9 @@ $.ajax({
             }
             var myTime=myDuration>9?"0:"+myDuration:"0:0"+myDuration;
             if(datas.recordTime==null&&datas.recordPlace==null){
-                $("#audio ul").append('<li style="width: 33%;float:left;border-right: 1px solid rgba(255,255,255,0.1);"><p style="margin-top: 0.6rem;">'+[i]+'</p><!--动物声音播放动画--><span style="margin-left: 0rem;">'+myTime+'</span><img style="float: left;" src="image/play.png" class="playAudio" alt=""/><audio class="mp3"><source src="http://www.dadpat.com/'+datas.audio[i].attUrl+'" type="audio/ogg"><source src="http://www.dadpat.com/'+datas.audio[i].attUrl+'" type="audio/mpeg"您的浏览器不支持 audio 元素。</audio></li>')
+                $("#audio ul").append('<li style="width: 33%;float:left;border-right: 1px solid rgba(255,255,255,0.1);"><p style="margin-top: 0.6rem;">'+[i+1]+'</p><!--动物声音播放动画--><span style="margin-left: 0rem;">'+myTime+'</span><img style="float: left;" src="image/play.png" class="playAudio" alt=""/><audio class="mp3"><source src="http://www.dadpat.com/'+datas.audio[i].attUrl+'" type="audio/ogg"><source src="http://www.dadpat.com/'+datas.audio[i].attUrl+'" type="audio/mpeg"您的浏览器不支持 audio 元素。</audio></li>')
             }else{
-                $("#audio ul").append('<li><p>'+[i]+'</p><!--动物声音播放动画--><div class="info"><p><img src="image/time.png" alt=""/><span>'+datas.recordTime+'</span><img src="image/add.png" alt=""/><span>'+datas.recordPlace+'</span></p></div><span>'+myTime+'</span><img src="image/play.png" class="playAudio" alt=""/><audio class="mp3"><source src="http://www.dadpat.com/'+datas.audio[i].attUrl+'" type="audio/ogg"><source src="http://www.dadpat.com/'+datas.audio[i].attUrl+'" type="audio/mpeg"您的浏览器不支持 audio 元素。</audio></li>')
+                $("#audio ul").append('<li><p>'+[i+1]+'</p><!--动物声音播放动画--><div class="info"><p><img src="image/time.png" alt=""/><span>'+datas.recordTime+'</span><img src="image/add.png" alt=""/><span>'+datas.recordPlace+'</span></p></div><span>'+myTime+'</span><img src="image/play.png" class="playAudio" alt=""/><audio class="mp3"><source src="http://www.dadpat.com/'+datas.audio[i].attUrl+'" type="audio/ogg"><source src="http://www.dadpat.com/'+datas.audio[i].attUrl+'" type="audio/mpeg"您的浏览器不支持 audio 元素。</audio></li>')
             }
         }
 
