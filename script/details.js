@@ -20,11 +20,6 @@ function GetQueryString(name){
 }
 //定义变量接收url参数
 var myresourceId=GetQueryString("resourceId");
-
-if(myresourceId!=null&&myresourceId.toString().length>0){
-    // console.log(myresourceId);
-}
-console.log(myresourceId)
 $.ajax({
     type:"post",
     url:"http://www.dadpat.com/api/res/get.do",
@@ -59,7 +54,6 @@ $.ajax({
             });
 
         //获取动物声音总条数
-        // var audioLength=datas.audio.length;
         var audioCe=datas.audio;
         var audioAll = [];
         for(var i=0;i<audioCe.length;i++){           
@@ -75,7 +69,6 @@ $.ajax({
         $(".playEnglish").click(function(){
             $(this).next("audio")[0].play();
         });
-        console.log(audioAll)
         for(var i=0;i<3;i++){
             if(audioAll.length <= i) break;
             var myDuration=Number(audioAll[i].duration);  //音频时间
@@ -132,7 +125,6 @@ $.ajax({
         console.log()
         //设置动物的图片
         for(var i=0;i<6;i++){
-            console.log(datas.image.default[i].attId)
             $(".container").append('<div class="item"><a href="javascript:;"><img src="http://www.dadpat.com/resource/thumbnail/'+datas.image.default[i].attId+'.file" alt=""/></a></div>');
         }
         var num = 6;

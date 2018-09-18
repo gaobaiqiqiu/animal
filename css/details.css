@@ -136,3 +136,34 @@ article>p{font-size: 0.6rem;color: rgba(255,255,255,0.8);margin: 0 0.57rem 0 0.5
     left: 0;
     border-radius: 1rem;
 }
+
+
+
+.active{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 10rem;
+    bottom: -11rem;
+    margin: auto;
+}
+.backgroun{
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-color: rgba(0,0,0,0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+}
+.ImgBoy{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin:auto;
+}
