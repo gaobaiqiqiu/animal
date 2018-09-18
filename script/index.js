@@ -179,3 +179,7 @@ function indexBack() {
     }
 }
 
+// 调用Android的退出app
+$('.back').click(function(){
+    window.android.exitApp();
+})

@@ -164,7 +164,7 @@ var ajaxBox=function () {
                 var pDesc = document.querySelectorAll('.chainUlBox p');
                 for (var n=0;n<pDesc.length;n++){
                 	if(pDesc[n].innerText == '鸟类'){
-                		pDesc[n].style.marginLeft = '3rem';
+                		pDesc[n].style.marginLeft = '1rem';
                 	}
                 	if(pDesc[n].innerText == '鹰鹃'){
                 		pDesc[n].style.marginLeft = '5.5rem';
@@ -180,6 +180,30 @@ var ajaxBox=function () {
                     }
                     if(pDesc[n].innerText == '环颈雉'){
                 		pDesc[n].style.marginLeft = '3.8rem';
+                    }
+                    if(pDesc[n].innerText == '喜马拉雅旱獭'){
+                		pDesc[n].style.marginLeft = '6.2rem';
+                    }
+                    if(pDesc[n].innerText == '小熊猫'){
+                		pDesc[n].style.marginLeft = '5.5rem';
+                    }
+                    if(pDesc[n].innerText == '长颈鹿'){
+                		pDesc[n].style.marginLeft = '7rem';
+                    }
+                    if(pDesc[n].innerText == '骆驼'){
+                		pDesc[n].style.marginLeft = '6rem';
+                    }
+                    if(pDesc[n].innerText == '鬼鸮'){
+                		pDesc[n].style.marginLeft = '6.5rem';
+                    }
+                    if(pDesc[n].innerText == '浣熊'){
+                		pDesc[n].style.marginLeft = '5.5rem';
+                    }
+                    if(pDesc[n].innerText == '猛禽'){
+                		pDesc[n].style.marginLeft = '2.5rem';
+                    }
+                    if(pDesc[n].innerText == '赤腹松鼠'){
+                		pDesc[n].style.marginLeft = '6rem';
                 	}
                     let itemIdP = itemLent[i].resId;
                     if(itemIdP!=null){  //判断是否存在可跳转的resId
